@@ -18,6 +18,7 @@ class ViewController: UITableViewController {
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        
         let fm = FileManager.default
         let path = Bundle.main.bundlePath
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -30,6 +31,8 @@ class ViewController: UITableViewController {
         
         pictures.sort { $0 < $1 }
     }
+    
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

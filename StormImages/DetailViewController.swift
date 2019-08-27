@@ -25,10 +25,29 @@ class DetailViewController: UIViewController {
         // both are Optionals, so we don't have to unwrap image
         title = "Picture \(String(currentIndex+1)) of \(String(arrayCount))"
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
         if let image = selectedImage {
             imageView.image = UIImage(named: image)
         }
+    }
+    
+    @objc func shareTapped() {
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("No image data")
+            return
+        }
+        
+        guard let imageName = selectedImage else {
+            return
+        }
+        
+        print(imageName)
+        
+        let vc = UIActivityViewController(activityItems: [imageName, image], applicationActivities: [])
+        // this is required for the iPad - as it needs to popover from a certain button (underneath it)
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
