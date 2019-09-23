@@ -44,6 +44,7 @@
 		89510CBE230EC07F00D171FE /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
 		89510CBF230EC07F00D171FE /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
 		89510CCA230FD9A400D171FE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		89A2EB402338E43C00EB09DD /* scratch.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = scratch.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,7 @@
 				89510CAC230EBF6A00D171FE /* LaunchScreen.storyboard */,
 				89510CAF230EBF6A00D171FE /* Info.plist */,
 				89510CB5230EC07F00D171FE /* Content */,
+				89A2EB402338E43C00EB09DD /* scratch.playground */,
 			);
 			path = StormImages;
 			sourceTree = "<group>";

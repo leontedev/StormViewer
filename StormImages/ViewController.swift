@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var pictures = [String]()
+    var viewCount = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func loadImages() {
+
         let fm = FileManager.default
         let path = Bundle.main.bundlePath
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -32,10 +34,20 @@ class ViewController: UITableViewController {
             }
         }
         
+        // Day 49: Challenge #1
+        let defaults = UserDefaults.standard
+        if let count = defaults.object(forKey: "viewCount") as? [Int] {
+            viewCount = count
+        } else {
+            pictures.map { _ in viewCount.append(0) }
+        }
+        
         pictures.sort { $0 < $1 }
         
         tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
     }
+    
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -49,6 +61,7 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         
         cell.textLabel?.text = pictures[indexPath.row]
+        cell.detailTextLabel?.text = "Views: " + String(viewCount[indexPath.row])
         
         return cell
     }
@@ -58,6 +71,12 @@ class ViewController: UITableViewController {
         if let detailVC = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
         
             let image = pictures[indexPath.row]
+            
+            // Day 49: Challenge #1
+            viewCount[indexPath.row] += 1
+            let defaults = UserDefaults.standard
+            defaults.set(viewCount, forKey: "viewCount")
+            
             detailVC.selectedImage = image
             detailVC.currentIndex = indexPath.row
             detailVC.arrayCount = pictures.count
