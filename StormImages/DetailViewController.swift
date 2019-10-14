@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        assert(selectedImage != nil)
         
         guard let currentIndex = currentIndex else { return }
         guard let arrayCount = arrayCount else { return }

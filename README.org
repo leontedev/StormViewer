@@ -33,3 +33,9 @@ And moved the code in a function, and added a tableView.reloadData() call at the
 #+END_SRC
 ** Day 49 Challenge
 Save a view count to UserDefaults for each image and display in a subtit
+** Day 65 Challenge
+1. Temporarily try adding an exception breakpoint to project 1, then changing the call to instantiateViewController() so that it uses the storyboard identifier “Bad” – this will fail, but your exception breakpoint should catch it.
+2. In project 1, add a call to assert() in the viewDidLoad() method of DetailViewController.swift, checking that selectedImage always has a value.
+#+BEGIN_SRC Swift
+assert(selectedImage != nil)
+#+END_SRC
